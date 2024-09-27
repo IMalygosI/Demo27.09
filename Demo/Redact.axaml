@@ -1,0 +1,186 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="500"
+		MinWidth="600" MinHeight="500"
+		MaxWidth="600" MaxHeight="500"
+		x:CompileBindings="False"
+        x:Class="Demo.Redact" WindowStartupLocation="CenterScreen"
+        Title="Redact">
+
+	<Grid ShowGridLines="True"
+		  ColumnDefinitions="*,1.3*"
+		  RowDefinitions="0.3*,0.4*,0.07*"
+		  Background="Wheat">
+
+		<Image Grid.Column="0"
+			   Grid.Row="1"
+			   Width="150"
+			   Height="150"
+			   Name="imag"
+			   Source="{Binding Pictures}"/>
+		
+		<TextBox Name="ImageControl"
+				 MaxWidth="260"
+				 MinWidth="260"
+				 Grid.Column="0"
+				 Grid.Row="0"
+				 Height="20"
+				 Margin="5 5 5 5"
+				 Watermark="Картинка"
+				 VerticalAlignment="Center"/>
+			
+		<TextBlock Grid.Column="0"
+				   Grid.Row="2"
+				   Margin="10 0 0 0"
+				   FontWeight="Bold"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left"
+				   Text="ID:"/>
+		
+		<TextBlock Name="Id"
+				   Grid.Column="0"
+				   Grid.Row="2"
+				   FontWeight="Bold"
+				   Margin="35 0 0 0"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left"
+				   Text=""/>
+
+		<ComboBox Name="IsActiveComboBox"
+				  Margin="5 82 5 5"
+				  VerticalAlignment="Center"
+				  Grid.Column="0"
+				  Grid.Row="0"
+				  MaxWidth="260"
+				  MinWidth="260">
+		</ComboBox>
+		
+		<ComboBox Name="manufacturer"
+				  Margin="5 45 5 5"
+				  VerticalAlignment="Bottom"
+				  Grid.Column="0"
+				  Grid.Row="0"  
+				  MaxWidth="260"
+				  MinWidth="260">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding ManufacturerName}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<TextBox Name="TovarName"
+				 Text=""
+				  MaxWidth="260"
+				  MinWidth="260"
+				 Grid.Column="0"
+				 Grid.Row="0"
+				 Height="20"
+				 Margin="5 5 5 0"
+				 Watermark="Наименование"
+				 VerticalAlignment="Top"/>
+
+		<TextBox Name="Cost"
+				 Text=""
+				 MaxWidth="260"
+				 MinWidth="260"
+				 Grid.Column="0"
+				 Grid.Row="0"
+				 Height="20"
+				 Margin="5 48 5 0"
+				 Watermark="Цена"
+				 VerticalAlignment="Top"/>
+
+		<TextBox Name="Description"
+				 Text=""
+				  MaxWidth="317"
+				  MinWidth="317"
+				 Grid.Column="1"
+				 Grid.Row="0"
+				 Margin="5"
+				 Watermark="Описание"/>
+		
+		<Button Grid.Column="1"
+				Grid.Row="1"
+				Name="Button_History"
+				IsVisible="False"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Top"
+				Height="30"
+				Width="120"
+				Margin="0 0 0 0"
+				Classes="Occent_Button">
+			<TextBlock HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Text="История"
+					   FontWeight="Bold"
+					   Foreground="White"/>
+		</Button>
+		
+		<Button Grid.Column="1"
+				Grid.Row="2"
+				Name="Otmena_Button"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Height="30"
+				Width="80"
+				Margin="60 0 0 0"
+				Classes="Occent_Button">
+			<TextBlock HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Text="Отмена"
+					   FontWeight="Bold"
+					   Foreground="White"/>
+		</Button>
+	
+		<Button Grid.Column="1"
+				Grid.Row="2"
+				Name="Redact_Button"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				Height="30"
+				Width="140"
+				Margin="10 0 0 0"
+				Classes="Occent_Button">
+			<TextBlock HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Text="Сохранить"
+					   FontWeight="Bold"
+					   Foreground="White"/>
+		</Button>
+
+		<Button Grid.Column="1"
+				Grid.Row="2"
+				IsVisible="False"
+				Name="Udalit_Button"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="30"
+				Width="80"
+				Margin="0 0 10 0"
+				Classes="Occent_Button">
+			<TextBlock HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Text="Удалить"
+					   FontWeight="Bold"
+					   Foreground="White"/>
+		</Button>
+		<Button Grid.Column="0"
+				Grid.Row="2"
+				Name="PictureButton"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Height="30"
+				Width="160"
+				Margin="0 0 10 0"
+				Background="Gray">
+			<TextBlock HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Text="Добавить картинку"
+					   FontWeight="Bold"
+					   Foreground="White"/>
+		</Button>
+	</Grid>
+</Window>

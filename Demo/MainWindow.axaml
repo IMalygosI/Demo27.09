@@ -1,0 +1,142 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1250" d:DesignHeight="700"
+		MinWidth="1250" MinHeight="700"
+		MaxWidth="1250" MaxHeight="700"
+		WindowStartupLocation="CenterScreen"
+		x:CompileBindings="False"
+        x:Class="Demo.MainWindow"
+        Title="Demo">
+	<Grid ShowGridLines="False"
+		  ColumnDefinitions="1.6*,1*,2.12*"
+		  RowDefinitions="1*,9*,1*"
+		  Background="Wheat">
+
+		<TextBox Grid.Column="0"
+				 Grid.Row="0"
+				 Name="SearchTextBox"
+				 Height="30"
+				 TextChanged="TextBox_TextChanged"
+				 VerticalAlignment="Bottom"
+				 Watermark="Поиск"
+				 Margin="30 0 0 0"/>
+
+		<DockPanel Grid.Column="2"
+				   Grid.Row="0"
+				   VerticalAlignment="Bottom"
+				   HorizontalAlignment="Right"
+				   Margin="0 0 30 0">
+
+			<ComboBox Name="BoxOne"
+					  MinWidth="250"
+					  MaxWidth="300">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding ManufacturerName}"/>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+
+			<ComboBox Name="BoxTwo"
+					  SelectedIndex="0"
+					  MinWidth="250"
+				      MaxWidth="300"
+					  Margin="5 0 0 0">
+				<ComboBoxItem>Все значения</ComboBoxItem>
+				<ComboBoxItem>Цена ↓</ComboBoxItem>
+				<ComboBoxItem>Цена ↑</ComboBoxItem>
+			</ComboBox>
+
+		</DockPanel>
+
+		<DockPanel Grid.Column="0"
+				   Grid.Row="2"
+				   Margin="30 0 0 0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top">
+			<TextBlock Name="Pokaz"
+					   Text=""
+					   FontWeight="Bold"/>
+			<TextBlock Text="  из  "
+					   FontWeight="Bold"/>
+			<TextBlock Name="Vsego"
+					   Text=""
+					   FontWeight="Bold"/>
+		</DockPanel>
+
+		<Button Name="Dobavit"
+				Grid.Column="2"
+				Grid.Row="2"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Top"
+				Background="Wheat"
+				Height="30"
+				Width="120"
+				Margin="0 0 30 0">
+			<TextBlock Text="Добавить"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   FontWeight="Bold"/>
+		</Button>
+
+		<ListBox Name="ListBox"
+				 SelectionMode="Single"
+				 Grid.ColumnSpan="3"
+				 Grid.Row="1"
+				 Background="Azure"
+				 BorderThickness="0.9"
+				 BorderBrush="Gray"
+				 Margin="30 5 30 10">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel HorizontalAlignment="Center"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border Background="{Binding SColor}"
+							Tag="{Binding Id}"
+							BorderThickness="0.9"
+							BorderBrush="Gray"
+							Width="250"
+							Height="400">
+						<Grid ShowGridLines="False"
+							  RowDefinitions="6*,0.4*,0.4*,1*"
+							  ColumnDefinitions="5*,*,*">
+							<Image Source="{Binding Pictures}"
+								   Grid.ColumnSpan="3"
+								   Grid.Row="0"/>
+							<TextBlock Text="{Binding Cost}"
+								       Margin="5 0 0 0"
+									   FontWeight="Bold"
+									   Grid.Column="0"
+									   Grid.Row="1"/>
+							<TextBlock Text="{Binding Activity}"
+									   Foreground="#04a0ff"
+									   FontWeight="Bold"
+								       Margin="5 0 0 0"
+									   Grid.Column="0"
+									   Grid.Row="2"/>
+							<TextBlock Text="{Binding TovarName}"
+								       Margin="5 0 0 0"
+									   FontWeight="Bold"
+									   TextWrapping="Wrap"
+									   Grid.ColumnSpan="3"
+									   Grid.Row="3"/>
+							<Border Grid.ColumnSpan="3"
+									Grid.Row="1"
+									BorderBrush="Black"
+									BorderThickness="0 1 0 0"/>
+							<Border Grid.ColumnSpan="3"
+									Grid.Row="2"
+									BorderBrush="Black"
+									BorderThickness="0 1 0 1"/>
+						</Grid>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</Window>
